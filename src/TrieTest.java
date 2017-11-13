@@ -6,7 +6,11 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
+/**
+ * Created by SurfinBirb on 12.11.2017.
+ */
 public class TrieTest {
+
 
 	@Test
 	public void generalTest(){
@@ -43,7 +47,7 @@ public class TrieTest {
 	}
 
 	@Test
-	public void iteratorTest() throws Exception {
+	public void iterator() throws Exception {
 		Trie trie = new Trie();
 		trie.add("tst");
 		trie.add("tsta");

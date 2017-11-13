@@ -1,3 +1,4 @@
+import javax.swing.text.html.HTMLDocument;
 import java.util.*;
 
 public class Trie extends AbstractSet<String> {
@@ -92,14 +93,14 @@ public class Trie extends AbstractSet<String> {
 
 		@Override
 		public boolean hasNext() {
-			return true;
+			return childrenIteratorStack.stream().anyMatch(Iterator::hasNext);
 		}
 
 		@Override
 		public String next() {
 			String stringForReturn = null;
 			Iterator<Map.Entry<Character, Node>> childrenIterator = childrenIteratorStack.peekLast(); // get first iterator
-			while(!childrenIterator.hasNext()){
+			while(!childrenIterator.hasNext() && charBuffer.length() != 0){
 				charBuffer.deleteCharAt(charBuffer.length() - 1);
 				childrenIteratorStack.removeLast();
 				childrenIterator = childrenIteratorStack.peekLast();
