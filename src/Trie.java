@@ -1,9 +1,8 @@
-import javax.swing.text.html.HTMLDocument;
 import java.util.*;
 
 public class Trie extends AbstractSet<String> {
 
-	Integer size = 0;
+	private int size = 0;
 
 	private class Node{
 		Map<Character, Node> children = new TreeMap<>();
@@ -53,7 +52,7 @@ public class Trie extends AbstractSet<String> {
 		Node current;
 		if (node != null) current = node;
 		else return false;
-		if (current.children.remove('0') != null) {
+		if (current.children.remove('\0') != null) {
 			size--;
 			return true;
 		}
@@ -77,7 +76,7 @@ public class Trie extends AbstractSet<String> {
 
 
 	private String withZero(String s){
-		return s + '0';
+		return s + '\0';
 	}
 
 	private class TrieIterator implements  Iterator<String>{
@@ -107,7 +106,7 @@ public class Trie extends AbstractSet<String> {
 			}
 			while (childrenIterator.hasNext()){
 				Map.Entry<Character, Node> entry = childrenIterator.next();
-				if(entry.getKey() != '0'){ // if not the end
+				if(entry.getKey() != '\0'){ // if not the end
 					charBuffer.append(entry.getKey()); // add character
 					childrenIterator = entry.getValue().children.entrySet().iterator();  // iterator for the children
 					childrenIteratorStack.addLast(childrenIterator); // add last element to the iterator deque
